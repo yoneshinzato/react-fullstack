@@ -1,8 +1,8 @@
 import React from 'react'
-import Link from './Link'
-import Botao from './Botao'
-import Legenda from './Legenda'
-import Campo from './Campo';
+import Link from './Link/Link'
+import Botao from './Botao/Botao'
+import Legenda from './Legenda/Legenda'
+import Campo from './Campo/Campo';
 
 function Formulario(props) {
   return (

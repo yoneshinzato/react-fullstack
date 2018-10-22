@@ -1,5 +1,5 @@
 import React from 'react'
-import Formulario from '../componentes/Formulario'
+import Formulario from '../../componentes/Formulario'
 import './Conta.css'
 
 function Conta() {
