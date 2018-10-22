@@ -4,23 +4,6 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-.caixa-texto {
-  font-size: 1rem;
-  box-sizing: border-box;
-  display: block;
-  width: 100%;
-  padding: 0.8rem;
-  margin: 0 0 1rem;
-  border: 1px solid black;
-  border-radius: 5px;
-}
-
-.caixa-texto:focus {
-  outline: none;
-  border-color: #9351b4;
-  box-shadow: 0 0 10px #9351b4;
-}
-
 .grupo__erro {
   color: red;
 }
@@ -214,23 +197,6 @@ body {
   .contato {
       padding-left: 10%;
       padding-right: 10%;
-  }
-}
-
-
-.login {
-  padding: 0.75rem 1rem 0;
-}
-
-@media (min-width: 768px) {
-  .login {
-      padding: 1.5rem 20% 0;
-  }
-}
-
-@media (min-width: 992px) {
-  .login {
-      padding: 2.25rem 30% 0;
   }
 }
 
