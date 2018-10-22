@@ -7,14 +7,15 @@ import Campo from './Campo';
 function Formulario() {
   return (
     <form>
-      <Link href="/">Criar umaconta</Link>
-      <Link href="/login">Fazer login</Link>
-      <Botao>Enviar</Botao>
-      <Botao disabled>Enviar</Botao>
+      <h1>Login</h1>
+      <p>Entre com seu email e senha.</p>
+      
       <Legenda htmlFor="email">Email:</Legenda>
       <Campo id="email" type="text" name="email" placeholder="email"  />
       <Legenda htmlFor="senha">Senha:</Legenda>
       <Campo id="senha" type="password" name="senha" placeholder="senha"  />
+      <Botao>Enviar</Botao>
+      <Link href="/conta">Criar uma conta</Link>
     </form>
   );
 }
