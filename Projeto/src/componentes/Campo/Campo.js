@@ -40,6 +40,9 @@ if condicao mostra erro
       console.log('O estado é', this.state)
     } else if (this.props.minLength && input.value.length < this.props.minLength){
       this.setState({erro: `Digite pelo menos ${this.props.minLength} caracteres`})
+    } else if(this.props.pattern && !this.props.pattern.test(input.value)){
+      //verifica se o texto bate com o paixão da regex
+      this.setState({erro: "Valor inválido"})
     } else{
       this.setState({erro:''})
     }
