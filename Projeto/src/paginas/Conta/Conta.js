@@ -12,16 +12,16 @@ function Conta() {
       <p>Envie o formulário para criar uma conta!</p>
       
       <Legenda htmlFor="">Nome:</Legenda>
-      <Campo id="nome"type="nome"name="nome"placeholder="Nome" Obrigatorio />
+      <Campo id="nome"type="nome"name="nome"placeholder="Nome" min/>
 
       <Legenda htmlFor="telefone">Telefone:</Legenda>
       <Campo id="telefone" type="tel" name="telefone" placeholder="Telefone"/>
 
       <Legenda htmlFor="email">Email:</Legenda>
-      <Campo id="email"type="email"name="email"placeholder="Email"/>
+      <Campo id="email"type="email"name="email"placeholder="Email" required minLength={10} />
       
       <Legenda htmlFor="senha">Senha:</Legenda>
-      <Campo id="senha"type="password"name="senha"placeholder="Senha"/>
+      <Campo id="senha"type="password"name="senha"placeholder="Senha" required minLength={6} />
       
       <Botao>Enviar</Botao>
 
