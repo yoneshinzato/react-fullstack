@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { Component } from 'react'
 import './Campo.css'
 
-class Campo extends React.Component {
+class Campo extends Component {
 
   /*
 1) O componente pode mudar de estado? Sim // Classe
@@ -29,25 +29,42 @@ if condicao mostra erro
     //escrevendo dessa forma, não precisa usar o bind
     const input = evento.target //como se fosse document.getElementById('id')
     //indica qual o campo alvo do evento
-    console.log('chama o valida');
-    console.log('alvo do evento', input);
+    const { value, type } = input
+    const {required, minLength, pattern } = this.props
+    const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
-    if (this.props.required && input.value.trim() === '') {//email obrigatório
-      //required para ser obrigatório
-      //trim são espaços em branco no começo ou fim do que é digitado no input
-      this.setState({erro: 'Campo obrigatório'})
-      //muda para a mensagem de erro acima - campo obrigatório
-      console.log('O estado é', this.state)
-    } else if (this.props.minLength && input.value.length < this.props.minLength){
-      this.setState({erro: `Digite pelo menos ${this.props.minLength} caracteres`})
-    } else if(this.props.pattern && !this.props.pattern.test(input.value)){
-      //verifica se o texto bate com o paixão da regex
-      this.setState({erro: "Valor inválido"})
-    } else{
-      this.setState({erro:''})
+    let mensagem = ''
+    //ele já inicia vazia a mensagem
+    
+    //refatorando o código - reescrevendo o código dessa função
+
+    // if (this.props.required && input.value.trim() === '') {//email obrigatório
+    //   //required para ser obrigatório
+    //   //trim são espaços em branco no começo ou fim do que é digitado no input
+    //   this.setState({erro: 'Campo obrigatório'})
+    //   //muda para a mensagem de erro acima - campo obrigatório
+    //   console.log('O estado é', this.state)
+    // } else if (this.props.minLength && input.value.length < this.props.minLength){
+    //   this.setState({erro: `Digite pelo menos ${this.props.minLength} caracteres`})
+    // } else if(this.props.pattern && !this.props.pattern.test(input.value)){
+    //   //verifica se o texto bate com o paixão da regex
+    //   this.setState({erro: "Valor inválido"})
+    // } else{
+    //   this.setState({erro:''})
+    // }
+
+    //código if acima refatorado
+    if(required && value.trim() === ''){
+      mensagem = 'Campo obrigatório'
+    } else if (minLength && value.length < minLength){
+      mensagem = `Digite pelo menos ${minLength} caracteres`
+    } else if(type  === 'email' && !regex.test(value)){
+      mensagem = "Valor inválido"
     }
 
+    this.setState({erro: mensagem})
   }
+  //a mensagem de erro já está vazia, não precisa colocar de novo
 
   render(){
     
@@ -62,6 +79,7 @@ if condicao mostra erro
           placeholder={this.props.placeholder}
           onChange={this.valida} //a função é chamada pelo navergador, por isso não precisa do ()
           //recebe o nome da função que tem que executar toda vez que ocorrer uma mudança no conteúdo digitado no texto
+          onBlur={this.valida} //quando troca de campo
         />
         <p className="grupo__erro">{this.state.erro}</p>
       </div>

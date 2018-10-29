@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from '../../componentes/Link/Link'
 import Botao from '../../componentes/Botao/Botao'
-import Legenda from '../../componentes/Legenda/Legenda'
+import Legenda from '../..componentes/Legenda/Legenda'
 import Campo from '../../componentes/Campo/Campo'
 import './Login.css'
 
