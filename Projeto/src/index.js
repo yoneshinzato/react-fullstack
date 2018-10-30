@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Conta from './paginas/Conta/Conta';
+import Login from './paginas/Login/Login';
 import './index.css'
 
 
-const pagina = <Conta />
+const pagina = <Login />
 //alo alo WBrasil
 
 const divisaoProjeto = document.getElementById('projeto')

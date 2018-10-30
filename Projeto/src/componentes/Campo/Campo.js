@@ -2,7 +2,14 @@ import React, { Component } from 'react'
 import './Campo.css'
 
 class Campo extends Component {
-
+  constructor(props){
+    super(props)
+    this.state = {
+      modificado: false, 
+      erro: ''
+    }
+//inicia com erro, e modificado false retorna sem erro se estiver vazio ou se modificou 
+  }
   /*
 1) O componente pode mudar de estado? Sim // Classe
 2) O que muda? state = { erro: '' } ou {erro: 'Campo obrigatório'}
@@ -20,10 +27,16 @@ if condicao mostra erro
   //não precisa escrever function dentro da classe
   //a render não recebe parâmetro.
   //acessa o props usando o this
-  constructor(props) {
-    super(props)
-    this.state = {erro: ''}
+
+  temErro() {
+    if(!this.state.modificado || this.state.erro){
+      return true
+    } else{
+      return false
+    }
   }
+
+
   
   valida = (evento) => {
     //escrevendo dessa forma, não precisa usar o bind
@@ -62,9 +75,12 @@ if condicao mostra erro
       mensagem = "Valor inválido"
     }
 
-    this.setState({erro: mensagem})
+    this.setState({ modificado: true, erro: mensagem},
+    this.props.onChange
+    )
   }
   //a mensagem de erro já está vazia, não precisa colocar de novo
+  //
 
   render(){
     
