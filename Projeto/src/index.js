@@ -7,6 +7,7 @@ import Conta from './paginas/Conta/Conta'
 import Login from './paginas/Login/Login'
 import QuemSomos from './paginas/QuemSomos/QuemSomos'
 import Contato from './paginas/Contato/Contato'
+import NaoEncontrada from './paginas/NaoEncontrada/NaoEncontrada'
 
 
 import './index.css'
@@ -22,12 +23,16 @@ function App(){
                 <Route path="/conta" component={Conta} />
                 <Route path="/quem-somos" component={QuemSomos} />
                 <Route path="/contato" component={Contato} />
+                <Route component={NaoEncontrada} />
+                
                 
             </Switch>
             
         </div>
         //atributo path é string, por isso tá entre aspas
         //path="/" component={X} é como se fosse para deixar essa página X na home
+        //a nao encontrada vai ser utilizada quando nenhum dos caminhos acima for encontrado
+        //é parecido com switch case do javascript. O default no caso é a página não encontrada
     )
 }
 
