@@ -10,7 +10,7 @@ import Contato from './paginas/Contato/Contato'
 
 
 import './index.css'
-
+//comentário
 function App(){
     return(
         //HTML dentro da div abaixo tem que aparecer o esqueleto da página e as coisas que vão mudar
