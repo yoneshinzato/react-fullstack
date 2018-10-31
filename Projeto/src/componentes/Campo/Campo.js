@@ -29,7 +29,7 @@ if condicao mostra erro
   //acessa o props usando o this
 
   temErro() {
-    if(!this.state.modificado || this.state.erro){
+    if( (this.props.required && !this.state.modificado) || this.state.erro){
       return true
     } else{
       return false
@@ -77,6 +77,8 @@ if condicao mostra erro
 
     this.setState({ modificado: true, erro: mensagem},
     this.props.onChange
+    //
+    //chama o onChange da tag filha (se está tudo ok!), depois o da tag mãe
     )
   }
   //a mensagem de erro já está vazia, não precisa colocar de novo
