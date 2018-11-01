@@ -12,7 +12,7 @@ import Home from './paginas/Home/Home'
 
 
 import './index.css'
-//teste
+//teste teste 2
 
 
 let usuario = JSON.parse(localStorage.getItem('usuario'))
