@@ -1,5 +1,7 @@
 import React from 'react'
+import morrissey from './morrissey-sad-not-found.png'
 import './NaoEncontrada.css'
+//para importar imagens
 
 function NaoEncontrada(){
     return(
@@ -8,6 +10,8 @@ function NaoEncontrada(){
             <p className="nao-encontrada__simbolo">
                 :-(
             </p>
+            <img src={morrissey} alt="Morrissey não encontrado" />
+            
        </main> 
     )
 }

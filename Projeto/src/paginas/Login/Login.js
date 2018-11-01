@@ -14,6 +14,29 @@ class Login extends Component {
     this.state = {desabilitado: true}
   }
 
+  //função envia Dados para enviar os dados do formulário
+  //coloca dentro do objeto o que a pessoa digitou em email e senha
+  //ela começa vazia
+  //onEnviar guarda a função que tem que ser chamada entao é this.props.onEnviar que é a função que está em index.js
+  enviaDados = (evento) => {
+    evento.preventDefault()
+    //previne comportamento padrão do evento, não vai jogar pra outra tela
+
+    const campoEmail = this.emailRef.current
+    const campoSenha = this.senhaRef.current
+    //esses campos vai pegar quando o usuário digita email e senha e eles serão armazenados 
+    const dados = {
+      email: campoEmail.getValor(),
+      senha: campoSenha.getValor()
+    }
+    this.props.onEnviar(dados)
+    // aqui tá chamando o evento que ocorre na tag mãe
+    //tá chamando a função logaUsuario
+
+    this.props.historico.push('/')
+    //vai adicionar a nova url que se quer colocar
+  }
+
   habilitaOuDesabilita = (evento) => {
     const campoEmail = this.emailRef.current
     const campoSenha = this.senhaRef.current
@@ -30,38 +53,44 @@ class Login extends Component {
         <main className="login">
         <h1>Login</h1>
         <p>Entre com seu email e senha.</p>
-        
-        <Legenda htmlFor="email">Email:</Legenda>
-        <Campo 
-        ref={this.emailRef}
-        //acessa todas as propriedades de Campo e guarda em this.emailRef
-        id="email" 
-        type="email" 
-        name="email" 
-        placeholder="Email" 
-        required 
-        onChange={this.habilitaOuDesabilita}
-        />
-        
-        <Legenda htmlFor="senha">Senha:</Legenda>
-        <Campo 
-        ref={this.senhaRef}
-        //dá acesso a todas propriedades dentro do campo senha
-        id="senha" 
-        type="password" 
-        name="senha" 
-        placeholder="Senha" 
-        required 
-        minLength={6} 
-        onChange={this.habilitaOuDesabilita}
-        />
-        
-        <Botao desabilitado={this.state.desabilitado}>
-          Enviar
+
+        <form onSubmit={this.enviaDados}>
+          {/* onSubmit é usado para enviar as informações do formulario */}
+          {/* // a função pegaDados vai pegar os dados que o usuário vai digirar no formulário
+          //como está dentro de uma classe é this.enviaDados */}
+            <Legenda htmlFor="email">Email:</Legenda>
+            <Campo
+              ref={this.emailRef}
+              //acessa todas as propriedades de Campo e guarda em this.emailRef
+              id="email"
+              type="email"
+              name="email"
+              placeholder="Email"
+              required
+              onChange={this.habilitaOuDesabilita}
+            />
+
+            <Legenda htmlFor="senha">Senha:</Legenda>
+            <Campo
+              ref={this.senhaRef}
+              //dá acesso a todas propriedades dentro do campo senha
+              id="senha"
+              type="password"
+              name="senha"
+              placeholder="Senha"
+              required
+              minLength={6}
+              onChange={this.habilitaOuDesabilita}
+            />
+
+            <Botao desabilitado={this.state.desabilitado}>
+              Enviar
         </Botao>
+
+
+            <Link url="/conta">Criar uma conta</Link>
+        </form>
         
-  
-        <Link url="/conta">Criar uma conta</Link>
       </main>
       );
     }

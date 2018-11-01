@@ -4,12 +4,21 @@ import './Campo.css'
 class Campo extends Component {
   constructor(props){
     super(props)
+    this.valor = ''
     this.state = {
       modificado: false, 
       erro: ''
     }
+  
+    //começa vazio o value, e depois o valor é salvo dentro da classe Campo
+
 //inicia com erro, e modificado false retorna sem erro se estiver vazio ou se modificou 
   }
+
+  getValor = () => {
+    return this.valor;
+  }
+
   /*
 1) O componente pode mudar de estado? Sim // Classe
 2) O que muda? state = { erro: '' } ou {erro: 'Campo obrigatório'}
@@ -43,6 +52,9 @@ if condicao mostra erro
     const input = evento.target //como se fosse document.getElementById('id')
     //indica qual o campo alvo do evento
     const { value, type } = input
+
+    this.valor = value
+
     const {required, minLength, pattern } = this.props
     const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
@@ -80,6 +92,7 @@ if condicao mostra erro
     //
     //chama o onChange da tag filha (se está tudo ok!), depois o da tag mãe
     )
+
   }
   //a mensagem de erro já está vazia, não precisa colocar de novo
   //
