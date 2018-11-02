@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import logo from './logo.png'
 import './Navbar.css'
 import Menu from '../Menu/Menu'
@@ -21,9 +22,10 @@ import Menu from '../Menu/Menu'
 function Navbar(props) {
     return (
         <header className="navbar">
-            <a href='/'> 
+            <Link to='/'> 
                 <img className="navbar__logo" src={logo} alt="logo" />
-            </a>
+            </Link>
+            {/* //usa a tag link do router */}
 
             <Menu usuario={props.usuario} deslogaUsuario={props.deslogaUsuario} />
             {/* passa o atributo usuário porque está no menu, não na navbar

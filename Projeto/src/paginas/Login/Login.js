@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Link from '../../componentes/Link/Link'
+//abre o código da tag link e troca a tag <a> pelo <Link do react-router
 import Botao from '../../componentes/Botao/Botao'
 import Legenda from '../../componentes/Legenda/Legenda'
 import Campo from '../../componentes/Campo/Campo'
