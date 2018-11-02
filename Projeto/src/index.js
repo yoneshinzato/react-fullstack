@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 //esse componente import o react router, que é uma biblioteca o Switch significa mudar, literalmente
 //associação de uma url com um componente se chama ROTA
+import Navbar from './componentes/Navbar/Navbar'
 import Conta from './paginas/Conta/Conta'
 import Login from './paginas/Login/Login'
 import QuemSomos from './paginas/QuemSomos/QuemSomos'
@@ -18,15 +19,27 @@ import './index.css'
 let usuario = JSON.parse(localStorage.getItem('usuario'))
 //antes o usuario era null
 //agora pega o que estava no localStorage e transforma de novo em objeto
+
+
+
 function logaUsuario(dados) {
     //vai armazenar esses dados no local storage convertidos como texto
     //vai armazenar os dados em texto stringify, por isso dados é passado como parametro
     const json = JSON.stringify(dados) //função javascript
     localStorage.setItem('usuario', json)
+
     //adiciona um item dentro do armazenamento local do browser
     //vai recceber doir parametros, nome, texto
     usuario = dados
+
     console.log('usuario')
+}
+
+function deslogaUsuario(){
+    //precisa remover o item do locaStorage e esvaziar a function logaUsuario
+    localStorage.removeItem('usuario')
+    usuario = null
+    
 }
 
 //a função vai chamar a página de login, que é onde tem o botão que envia o evento
@@ -40,10 +53,18 @@ function logaUsuario(dados) {
 //comentário
 
 function App(){
+    // const props = {
+    //     usuario: usuario
+    // }
+
     return(
         //HTML dentro da div abaixo tem que aparecer o esqueleto da página e as coisas que vão mudar
         <div className="app">
-            {/* <NavBar /> */}
+            <Navbar usuario={usuario} deslogaUsuario={deslogaUsuario} />
+            {/* 
+            achou usuario aqui em index
+            passa o usuário, então, para a tag navbar
+            agora ver o código da navbar */}
             <Switch>
                 <Route path="/" exact render={() => {
                     return usuario ? <Home /> : <Redirect to="/login" />
