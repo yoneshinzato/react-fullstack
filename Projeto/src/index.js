@@ -61,10 +61,7 @@ function App(){
         //HTML dentro da div abaixo tem que aparecer o esqueleto da página e as coisas que vão mudar
         <div className="app">
             <Navbar usuario={usuario} deslogaUsuario={deslogaUsuario} />
-            {/* 
-            achou usuario aqui em index
-            passa o usuário, então, para a tag navbar
-            agora ver o código da navbar */}
+            {/* achou usuario aqui em index, passa o usuário, então, para a tag navbar, agora ver o código da navbar */}
             <Switch>
                 <Route path="/" exact render={() => {
                     return usuario ? <Home /> : <Redirect to="/login" />

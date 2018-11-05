@@ -5,10 +5,11 @@ import './Link.css'
 
 function Link(props) {
   return (
-    <PaginaLink className="link" to={props.url}> //muda o href para 'to'
+    <PaginaLink className="link" to={props.url}>
       {props.children}
     </PaginaLink>
   )
 }
+//o href vira to
 
 export default Link
