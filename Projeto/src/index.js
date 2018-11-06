@@ -68,11 +68,12 @@ function App(props){
     const logaUsuario = props.logaUsuario
     const deslogaUsuario = props.deslogaUsuario
     //so para não ter que fica passando a props abaixo
+    // fez componente receber tudo via props, duas ações para disparar ações logaUsuario e deslogaUsuario
 
     return(
         //HTML dentro da div abaixo tem que aparecer o esqueleto da página e as coisas que vão mudar
         <div className="app">
-            <Navbar usuario={usuario} deslogaUsuario={deslogaUsuario} />
+            <Navbar />
             {/* achou usuario aqui em index, passa o usuário, então, para a tag navbar, agora ver o código da navbar */}
             <Switch>
                 <Route path="/" exact render={() => {
@@ -115,6 +116,7 @@ function passaDadosDoEstadoParaMeuComponente(state){
     //mesmo state guardado lá na store
     const props = {
         usuario: state.usuario
+        //pega o estado do usuario e lá embaixo retorn o props
     }
 
     return props
@@ -123,6 +125,7 @@ function passaDadosDoEstadoParaMeuComponente(state){
 function passaFuncoesQueDisparamAcoesViaProps(dispatch){
     //tem acesso à ação que dispara a ação e se chama dispatch
     //tb retorna algo que vai ser colocado dentro do props
+    //pode criar um props objeto e dentro dele passar funções com seus componenetes que disparam ações
     const props = {
         //aqui vai passar o logaUsuario, que é uma função que vai ser chamada pelo componente, que é uma tag
         //e que vai disparar uma ação
@@ -131,12 +134,14 @@ function passaFuncoesQueDisparamAcoesViaProps(dispatch){
                 //vai receberum type obrigatoriamente. vai ser igual o que tá no switch case do reducers
                 type: 'LOGA_USUARIO',
                 dados: dados
+                //passa os dados (tipo o email)
             }
 
             dispatch(acao)
         },
 
         //vai ser chamada quando alguem desloga do navbar e tb vai disparar uma ação
+        // passa um objeto acao e libera o dispatch com ação
         deslogaUsuario: () => {
             const acao = {
                 type: 'DESLOGA_USUARIO'
@@ -151,6 +156,7 @@ function passaFuncoesQueDisparamAcoesViaProps(dispatch){
 }
 
 //ta ligado ao connect lá de cima, que foi importado
+
 
 
 const conectaNaStore = connect(

@@ -22,15 +22,17 @@ function usuario (usuarioAtual = usuarioInicial,action) {
         //é da ação que pega os dados do usuário. a ação é o parametro
         const usuarioLogado = action.dados
         //dados vem da action que mostra dados tipo email e o que mais foi passado
-        return usuarioLogado
+        return usuarioLogado //com os dados
         case 'DESLOGA_USUARIO':
         const usuarioDeslogado = null
         //null porque acabou de sair do sistema
-        return usuarioDeslogado
+        return usuarioDeslogado //retorna vazio, nulo
         default:
         return usuarioAtual 
         //state com o estado inicial
         //caso não logue, nem deslogue, o default vai ser  com o estado atual usuarioAtual
+        //retorna o parametro do jeito que recebeu
+        //qd recebe postit o return é default
 
     }
 }

@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux'
+//vai conectar um componente de react com redux
 import { Link } from 'react-router-dom'
 import logo from './logo.png'
 import './Navbar.css'
@@ -34,4 +36,45 @@ function Navbar(props) {
     )
 }
 
-export default Navbar
+//criar a função que pega os dados do estado
+
+function passaNoPropsDadosDoEstado(state){
+    return {
+        //tem que tudo que quer pegar do estado, que é o objeto usuário
+        usuario: state.usuario
+    }
+}
+
+function passaNoPropsDisparadoresDeAcao(){
+    return {
+        
+        //a função vai disparar uma ação quando for chamada
+        deslogaUsuario: () => {
+
+            const acao = {
+                //cada acao recebe um tipo
+                type: 'DESLOGA_USUARIO'
+                //VAI VOLTAR NULO ENTAO NAO PRECISA PASSAR MAIS NADA
+            }
+
+            dispatch(acao)
+        }
+    }
+}
+
+const conectaNaStore = connect(
+    passaNoPropsDadosDoEstado,
+    passaNoPropsDisparadoresDeAcao
+)
+
+//chama na função para conectar
+
+const NavBarConectado = conectaNaStore(Navbar)
+
+//a connect retorna outra função
+
+
+//agora precisa exportar o Navbar conectado
+
+
+export default NavbarConectado
