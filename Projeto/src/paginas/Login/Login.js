@@ -123,7 +123,8 @@ class Login extends Component {
   }
 
   const conectaNaStore = connect(null, noPropsPassaAcoes)
-
+  //colocou nulo porque a primeira não tem nada pra pegar no estado
+  //mas a segunda tem a função a ser executada
   //chama na função para conectar
 
   const LoginConectado = conectaNaStore(Login)

@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 //vai conectar um componente de react com redux
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import logo from './logo.png'
 import './Navbar.css'
 import Menu from '../Menu/Menu'
@@ -77,4 +77,5 @@ const NavBarConectado = conectaNaStore(Navbar)
 //agora precisa exportar o Navbar conectado
 
 
-export default NavBarConectado
+export default withRouter(NavBarConectado)
+//porque o navbar usa a tag navlink

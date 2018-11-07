@@ -58,14 +58,15 @@ class Menu extends Component {
         return(
             
             <nav className="navbar-menu">
-                <a className={classeDoBotao} onClick={this.abreOuFechaMenu}>
+                <button className={classeDoBotao} onClick={this.abreOuFechaMenu}>
                     Menu
-                </a>
+                </button> 
                 {/* põe um onclik para chamar a função quando o evento do clique acontecer.
                 Usa entre chaves porque é uma função, não um texto. nao passa parametro porque quem vai executar é o navegador
                 quando o usuário clicar no menu 
                 colocar o onclick no navlink para ver se funciona
             */}
+            {/* //mudou de a para button por causa da acessibilidade */}
 
                 <ul className={classesDasOpcoes}>
                     <li>
