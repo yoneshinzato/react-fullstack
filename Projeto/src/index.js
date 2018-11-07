@@ -79,9 +79,8 @@ function App(props){
                 <Route path="/" exact render={() => {
                     return usuario ? <Home /> : <Redirect to="/login" />
                 }} />
-                <Route path="/login" render={(props) =>{
-                    return <Login historico={props.history} onEnviar = {logaUsuario} />
-                }} />
+                <Route path="/login" component={Login}/> 
+                {/* tá conectado com login.js agora */}
                 {/* essa função tb pode receber props, assim como os componentes */}
                 {/* pega o historico do navegador e faz um push */}
                 {/* o history vai direcionar a página para home */}

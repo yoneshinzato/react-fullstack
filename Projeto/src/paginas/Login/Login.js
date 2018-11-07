@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Link from '../../componentes/Link/Link'
+import { connect } from 'react-redux'
 //abre o código da tag link e troca a tag <a> pelo <Link do react-router
 import Botao from '../../componentes/Botao/Botao'
 import Legenda from '../../componentes/Legenda/Legenda'
@@ -30,12 +31,15 @@ class Login extends Component {
       email: campoEmail.getValor(),
       senha: campoSenha.getValor()
     }
-    this.props.onEnviar(dados)
+    this.props.logaUsuario(dados)
+    //não é mais onEnviar, porque agora chama logaUsuario
     // aqui tá chamando o evento que ocorre na tag mãe
     //tá chamando a função logaUsuario
 
-    this.props.historico.push('/')
+    this.props.history.push('/')
     //vai adicionar a nova url que se quer colocar
+    //como não passa mais historico:history como era antes, pode colocar history direto
+  
   }
 
   habilitaOuDesabilita = (evento) => {
@@ -97,7 +101,31 @@ class Login extends Component {
     }
   }
 
-  
+  //historico={props.history} onEnviar = {logaUsuario}
 
+  //criar a função que pega dados do estado
 
-export default Login
+  //login só loga, então não recebe um state
+
+  function noPropsPassaAcoes(dispatch){
+    return {
+      //precisa receber o dispatch como parametro
+      //a função vai disparar uma ação quando for chamada
+      logaUsuario: (dados) =>{
+        const action = {
+          //CADA AÇÃO RECEBE UM TIPO
+          type: "LOGA_USUARIO",
+          dados: dados
+        }
+        dispatch(action)
+      }
+    }
+  }
+
+  const conectaNaStore = connect(null, noPropsPassaAcoes)
+
+  //chama na função para conectar
+
+  const LoginConectado = conectaNaStore(Login)
+
+export default LoginConectado

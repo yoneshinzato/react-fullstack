@@ -45,9 +45,9 @@ function passaNoPropsDadosDoEstado(state){
     }
 }
 
-function passaNoPropsDisparadoresDeAcao(){
+function passaNoPropsDisparadoresDeAcao(dispatch){
     return {
-        
+        //precisa receber o dispatch como parametro
         //a função vai disparar uma ação quando for chamada
         deslogaUsuario: () => {
 
@@ -77,4 +77,4 @@ const NavBarConectado = conectaNaStore(Navbar)
 //agora precisa exportar o Navbar conectado
 
 
-export default NavbarConectado
+export default NavBarConectado
