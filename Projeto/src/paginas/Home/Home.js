@@ -1,25 +1,42 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 //importa o conect
 import { Redirect } from 'react-router-dom'
 import './Home.css'
+import carregando from './carregando.svg'
 
-function Home(props){
-    //quando faz o connect, o componente recebe props
-    if(!props.usuario){
-        return <Redirect to="/login" />
-        //vai importar do react router 
+class Home extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+           carregando: true 
+        }
     }
-    //tá fazendo a condição que antes estava no index pra acessar a home
-    //ou se vai redirecionar para o login
-    //se não estiver logado, ele nem vai entrar na home
-    //então nem vai dar o return abaixo]
-    //aí quando entra de novo, e está logado, entra na home
-    return(
-       <main className="home">    
-            
-       </main> 
-    )
+
+    render(){
+        if(!this.props.usuario){
+            return <Redirect to="/login" />
+            //vai importar do react router 
+            //tá usando classe então tem que usar this.props.usuario
+        }
+
+        return(
+            <main className="home">    
+                {this.state.carregando ? (
+                    <img className="home__loading" src={carregando} alt="carregando" />
+                    ) : (
+                    <div>
+
+                    </div>
+                    //aqui vai listar os postits amanhã
+                    )
+
+                    })
+            </main> 
+            //if dentro da tag coloca chave
+         )
+    }
+
 }
 
 
