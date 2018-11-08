@@ -22,18 +22,7 @@ function Home(props){
     )
 }
 
-//precisa agora pegar dados do estado
 
-function passaDadosDoEstadoNoProps(state){
-    //retorna o que quer colocar dentro do props
-    return {
-        usuario: state.usuario
-    }
-}
-
-const conectaNaStore = connect(passaDadosDoEstadoNoProps)
-//aqui como é passada a função, ele já dedux que o primeiro item é null
-
-const HomeConectado = conectaNaStore(Home)
-
-export default HomeConectado
+export default connect(
+    (state) =>({usuario: state.usuario})
+    )(Home)

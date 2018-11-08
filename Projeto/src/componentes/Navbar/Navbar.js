@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 //vai conectar um componente de react com redux
 import { Link, withRouter } from 'react-router-dom'
+import { deslogaUsuario } from '../../redux/actions' //vai importar o actions onde está agora a função deslogaUsuario
 import logo from './logo.png'
 import './Navbar.css'
 import Menu from '../Menu/Menu'
@@ -36,46 +37,6 @@ function Navbar(props) {
     )
 }
 
-//criar a função que pega os dados do estado
-
-function passaNoPropsDadosDoEstado(state){
-    return {
-        //tem que tudo que quer pegar do estado, que é o objeto usuário
-        usuario: state.usuario
-    }
-}
-
-function passaNoPropsDisparadoresDeAcao(dispatch){
-    return {
-        //precisa receber o dispatch como parametro
-        //a função vai disparar uma ação quando for chamada
-        deslogaUsuario: () => {
-
-            const acao = {
-                //cada acao recebe um tipo
-                type: 'DESLOGA_USUARIO'
-                //VAI VOLTAR NULO ENTAO NAO PRECISA PASSAR MAIS NADA
-            }
-
-            dispatch(acao)
-        }
-    }
-}
-
-const conectaNaStore = connect(
-    passaNoPropsDadosDoEstado,
-    passaNoPropsDisparadoresDeAcao
-)
-
-//chama na função para conectar
-
-const NavBarConectado = conectaNaStore(Navbar)
-
-//a connect retorna outra função
 
 
-//agora precisa exportar o Navbar conectado
-
-
-export default withRouter(NavBarConectado)
-//porque o navbar usa a tag navlink
+export default withRouter(connect((state) =>({usuario: state.usuario}), {deslogaUsuario})(Navbar))

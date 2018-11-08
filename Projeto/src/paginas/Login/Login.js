@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Link from '../../componentes/Link/Link'
 import { connect } from 'react-redux'
+import { logaUsuario } from '../../redux/actions' //vai importar o actions onde está agora a função logaUsuario
 //abre o código da tag link e troca a tag <a> pelo <Link do react-router
 import Botao from '../../componentes/Botao/Botao'
 import Legenda from '../../componentes/Legenda/Legenda'
@@ -107,26 +108,37 @@ class Login extends Component {
 
   //login só loga, então não recebe um state
 
-  function noPropsPassaAcoes(dispatch){
-    return {
-      //precisa receber o dispatch como parametro
-      //a função vai disparar uma ação quando for chamada
-      logaUsuario: (dados) =>{
-        const action = {
-          //CADA AÇÃO RECEBE UM TIPO
-          type: "LOGA_USUARIO",
-          dados: dados
-        }
-        dispatch(action)
-      }
-    }
-  }
 
-  const conectaNaStore = connect(null, noPropsPassaAcoes)
-  //colocou nulo porque a primeira não tem nada pra pegar no estado
-  //mas a segunda tem a função a ser executada
-  //chama na função para conectar
+//   const conectaNaStore = connect(
+//     null, 
+//     noPropsPassaAcoes
+//     )
+//   //colocou nulo porque a primeira não tem nada pra pegar no estado
+//   //mas a segunda tem a função a ser executada
+//   //chama na função para conectar
 
-  const LoginConectado = conectaNaStore(Login)
+//   const LoginConectado = conectaNaStore(Login)
 
-export default LoginConectado
+// export default LoginConectado
+
+//-------
+// const conectaNaStore = connect(
+//   null, 
+//   { logaUsuario }
+//   //a info da função tá toda no actions agora
+//   //trocou a função por esse objeto
+//   )
+//colocou nulo porque a primeira não tem nada pra pegar no estado
+//mas a segunda tem a função a ser executada
+//chama na função para conectar
+
+// const LoginConectado = conectaNaStore(Login)
+
+// export default LoginConectado
+
+// const LoginConectado = connect(null, { logaUsuario })(Login)
+
+export default connect(
+  null, 
+  { logaUsuario })
+  (Login)
