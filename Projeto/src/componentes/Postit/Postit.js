@@ -35,6 +35,7 @@ class Postit extends Component {
 
     render(){
 const cadastrando = !this.props.id
+//oi
 
         return (
             <form className="postit" onSubmit={this.cadastraOuAlteraPostit}>
