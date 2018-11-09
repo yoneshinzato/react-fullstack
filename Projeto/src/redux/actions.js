@@ -16,3 +16,11 @@ export function deslogaUsuario(){
     }
 
 }
+
+export function cadastraPostit(dados){
+    //retorna um objeto que representa a ação
+    return {
+        type: 'CADASTRA_POSTIT',
+        dados
+    }
+}

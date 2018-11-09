@@ -55,14 +55,20 @@ function usuario (usuarioAtual = usuarioInicial, action) {
 //     dados: {email: 'chibaeriyo@gmail.com'}
 // }
 
-function postits(postitsAtuais = [], action){
+function postits(stateAtualDoPostit = [], action){
     //também é um redutor, e tb recebe switch case, igual acima
     switch(action.type) {
         //verifica o tipo da ação
         //e usar cada case em caixa alta é uma convenção
-        //só faz algo quando receber postits novos portanto, a logausuario nao vai fazer diferença
+        //só faz algo quando receber postits novos portanto, a logausuario nao vai fazer diferença]
+        case 'CADASTRA_POSTIT':
+            //retorna um novo array contendo o postit - o concat
+            return stateAtualDoPostit.concat(action.dados)
+            //para acessar todos os dados do postit que sao título e a mensagem
+            //vai concatenar o state com os dados e retornar um novo array
+        
         default: 
-        return postitsAtuais
+        return stateAtualDoPostit
     }
 }
 
