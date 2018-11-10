@@ -66,7 +66,17 @@ function postits(stateAtualDoPostit = [], action){
             return stateAtualDoPostit.concat(action.dados)
             //para acessar todos os dados do postit que sao título e a mensagem
             //vai concatenar o state com os dados e retornar um novo array
-        
+        case 'ALTERA_POSTIT':
+        return stateAtualDoPostit.map(item=>
+            item.id=== action.dados.id ? action.dados : item)
+        //se o postit tem igual id igual ao id que tem os dados iguais dos dados da ação troca os dados, senão retorna como estava
+        //vai retornar uma array com os dados alterados
+        case 'REMOVE_POSTIT':
+        return stateAtualDoPostit.filter(item =>
+            item.id !== action.id)
+        //filtra os com os ids diferentes porque a que tem o id que eu quero remover não interessa mais 
+        //vai retornar um nov array sem o que remove
+        //filtrar os posts que tenham um id diferente do que vai remover
         default: 
         return stateAtualDoPostit
     }

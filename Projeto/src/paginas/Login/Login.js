@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Link from '../../componentes/Link/Link'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import { logaUsuario } from '../../redux/actions' //vai importar o actions onde está agora a função logaUsuario
 //abre o código da tag link e troca a tag <a> pelo <Link do react-router
 import Botao from '../../componentes/Botao/Botao'
@@ -55,6 +56,10 @@ class Login extends Component {
     }
   }
     render(){
+      if(this.props.usuario) {
+        return <Redirect to='/' />
+      }
+
       return (
         <main className="login">
         <h1>Login</h1>
@@ -139,6 +144,6 @@ class Login extends Component {
 // const LoginConectado = connect(null, { logaUsuario })(Login)
 
 export default connect(
-  null, 
+  (state) =>({ usuario: state.usuario}), 
   { logaUsuario })
   (Login)
