@@ -8,7 +8,7 @@ import './Conta.css'
 // O componente pode mudar de estado? Sim - Class
 // O que muda? setState({desabilitado:false}) ou setState({desabilitado:true})
 //Qual estado inicial? state = { desabilitado: false} //constructor
-//O que faz ele mudar?
+
 //function onChange para verificar se todos os campos estao corretos (não tem erro)
 
 
